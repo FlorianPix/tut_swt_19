@@ -6,3 +6,5 @@ Donnerstag 2.DS APB/E006
 
 Donnerstag 5.DS APB/E001
 [Online Umfrage](https://www.umfrageonline.com/s/f5587c4)
+
+[JavaKurs von WiSe18/19](https://github.com/RatedARRR/TUT-JAVA-2018)
