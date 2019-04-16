@@ -1,6 +1,8 @@
 # tut_swt19
 Zusatzinformationen und -folien zu den Übungen SoSe19 Softwaretechnologie
 
+Leider darf ich nur ausgewählte Musterlösungen hochladen.
+
 Donnerstag 2.DS APB/E006
 [Online Umfrage](https://www.umfrageonline.com/s/ab589bd)
 
