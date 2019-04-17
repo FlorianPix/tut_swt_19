@@ -1,0 +1,205 @@
+\documentclass[10pt]{beamer}
+
+%theme
+\usetheme{metropolis}
+% packages
+\usepackage{color}
+\usepackage{tabularx}
+\usepackage{listings}
+\usepackage[main=ngerman, USenglish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{csquotes}
+\usepackage{hyperref}
+
+% color definitions
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\definecolor{paleorange}{HTML}{CC7832}
+
+\lstset{
+    backgroundcolor=\color{white},
+    % choose the background color;
+    % you must add \usepackage{color} or \usepackage{xcolor}
+    basicstyle=\footnotesize\ttfamily,
+    % the size of the fonts that are used for the code
+    breakatwhitespace=false,
+    % sets if automatic breaks should only happen at whitespace
+    breaklines=true,                 % sets automatic line breaking
+    captionpos=b,                    % sets the caption-position to bottom
+    commentstyle=\color{mygreen},    % comment style
+    % deletekeywords={...},
+    % if you want to delete keywords from the given language
+    extendedchars=true,
+    % lets you use non-ASCII characters;
+    % for 8-bits encodings only, does not work with UTF-8
+    frame=single,                    % adds a frame around the code
+    keepspaces=true,
+    % keeps spaces in text,
+    % useful for keeping indentation of code
+    % (possibly needs columns=flexible)
+    keywordstyle=\color{blue},       % keyword style
+    % morekeywords={*,...},
+    % if you want to add more keywords to the set
+    numbers=left,
+    % where to put the line-numbers; possible values are (none, left, right)
+    numbersep=5pt,
+    % how far the line-numbers are from the code
+    numberstyle=\tiny\color{mygray},
+    % the style that is used for the line-numbers
+    rulecolor=\color{black},
+    % if not set, the frame-color may be changed on line-breaks
+    % within not-black text (e.g. comments (green here))
+    stepnumber=1,
+    % the step between two line-numbers.
+    % If it's 1, each line will be numbered
+    stringstyle=\color{mymauve},     % string literal style
+    tabsize=4,                       % sets default tabsize to 4 spaces
+    % show the filename of files included with \lstinputlisting;
+    % also try caption instead of title
+    language = Java,
+	showspaces = false,
+	showtabs = false,
+	showstringspaces = false,
+	escapechar = ,
+        morecomment=[s][\textcolor{paleorange}]{@}{\ },
+}
+
+\def\ContinueLineNumber{\lstset{firstnumber=last}}
+\def\StartLineAt#1{\lstset{firstnumber=#1}}
+\let\numberLineAt\StartLineAt
+
+\newcommand{\codeline}[1]{
+        \alert{\texttt{#1}}
+}
+
+% Authors of the slides
+\author{Florian Pix}
+
+% Name of the Course
+\institute{SWT Übung SoSe19}
+
+% Presentation title
+\title{Testen mit JUnit}
+\date{18.04.2019}
+
+% Fancy Logo
+\titlegraphic{\hfill\includegraphics[height=3cm]{blue}}
+
+\begin{document}
+
+\begin{frame}{Testen mit JUnit}
+    \titlepage
+\end{frame}
+
+\begin{frame}{Hilfe}
+    \textcolor{mymauve}{\textbf{\href{https://st.inf.tu-dresden.de/files/teaching/ss19/st/Arbeiten mit JUnit 3.8.pdf}{Anleitung der Fakultät zum Einstieg in JUnit}}}
+\end{frame}
+
+\begin{frame}{Gliederung}
+    \setbeamertemplate{section in toc}[sections numbered]
+    \tableofcontents
+\end{frame}
+
+\begin{frame}[fragile]{Testfalltabellen}
+    \section{Testfalltabellen}
+\end{frame}
+
+\begin{frame}[fragile]{Testfalltabellen}
+\begin{description}
+\item[Bestimme die Zustände:]\hfill \\
+in denen sich ein Objekt\\ 
+nach einer Anweisung befinden muss
+\item[Bestimme die Extremwerte:]\hfill \\
+der Parameter der zu testenden Methode \\
+z.B. 0 oder null
+\item[Bestimme die Randwerte:]\hfill \\
+der Parameter der zu testenden Methode \\
+z.B. 1.1. und 31.12.
+\end{description}
+\end{frame}
+
+\begin{frame}[fragile]{Testfalltabellen}
+Testfalltabelle für die Methode grow(int move) aus einem Snakespiel
+
+\begin{tabularx}{11cm}{|X|X|X|X|X|}
+\hline
+Testfall & Erwarteter Status & Klasse & Parameter & Erwartete Ausgabe\\
+\hline
+S1 & Exception & Snake & -1 & Eine Schlange kann nicht schrumpfen.\\
+\hline
+S2 & ok & Snake & 1 & 2\\
+\hline
+S3 & ok & Snake & 5 & 6\\
+\hline
+\end{tabularx}
+\end{frame}
+
+\begin{frame}[fragile]{Fixtures}
+    \section{Fixtures}
+\end{frame}
+
+\begin{frame}[fragile]{Fixtures}
+    Eine Fixierung ist ein fixer Status von Objekten der als Grundlagen des Durchlaufen von Tests genutzt wird. \\
+    Der Sinn einer solchen Fixierung ist es sicher zu stellen dass es eine bekannte Umgebung gibt in der Resultate reproduzierbar sind. \\
+    Beispiel:
+    \begin{description}
+    \item[Vorbereitung von Input Daten:]\hfill \\
+        Erstellung von Mock-Objekten\\
+        Laden einer Datenbank mit bekannten Datensatz
+    \end{description}
+\end{frame}
+
+\begin{frame}[fragile]{Fixtures}
+    Dazu muss ebenfalls sichergestellt werden dass bei einem Test die Umgebung nicht so verändert wurde dass andere Tests beeinflusst werden könnten.
+\end{frame}
+
+\begin{frame}[fragile]{Fixtures}
+    JUnit 3.8.4\\
+    \textcolor{mygreen}{\textbf{setUp()}} \newline
+    \textcolor{mygreen}{\textbf{tearDown()}}
+\end{frame}
+
+\begin{frame}[fragile]{Testrunner}
+    \section{Testrunner}
+\end{frame}
+
+\begin{frame}[fragile]{Testrunner}
+    Testeinstieg/Main-Methode\\
+    Beispiele:\\
+    \textcolor{mygreen}{\textbf{junit.textui.TestRunner}} \newline
+    \textcolor{mygreen}{\textbf{junit.swingui.TestRunner}}
+\end{frame}
+
+\begin{frame}[fragile]{Testsuite}
+    \section{Testsuite}
+\end{frame}
+
+\begin{frame}[fragile]{Testsuite}
+Wenn wir viele Tests auf einmal ausführen wollen können wir diese in einer Testsuite zusammenfassen.\\
+\begin{lstlisting}[basicstyle=\ttfamily\scriptsize,gobble=8]
+        TestSuite suite= new TestSuite();
+        suite.addTest(new FirstTest("testEquals"));
+        suite.addTest(new FirstTest("testSimpleAdd"));
+        TestResult result= suite.run();
+\end{lstlisting}
+Oder:
+\begin{lstlisting}[basicstyle=\ttfamily\scriptsize,gobble=8]
+        TestSuite suite= new TestSuite(FirstTest.class); 
+        TestResult result= suite.run();
+\end{lstlisting}
+\end{frame}
+
+
+\begin{frame}[fragile]{JUnit 3 und 4}
+    \section{JUnit 3 und 4}
+\end{frame}
+
+\begin{frame}[fragile]{JUnit 3 und 4}
+    \hfill\includegraphics[scale=0.45]{comparison}
+    \textcolor{mymauve}{\textbf{\href{http://asjava.com/junit/junit-3-vs-junit-4-comparisonf}{Quelle: "asjava.com"}}}\\
+    \textcolor{mymauve}{\textbf{\href{https://github.com/RatedARRR/TUT-JAVA-2018/blob/master/Slides/Javakurs 11-13.pdf}{Hilfe zu JUnit4}}}
+\end{frame}
+
+\end{document}
