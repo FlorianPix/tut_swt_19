@@ -5,12 +5,12 @@ public class Book {
 	
     public Book(String title) {
         this.title = title;
-		this.state = true;
+	this.state = true;
     }
 	
-	public void setState(boolean state){
-		this.state = state;
-	}
+    public void setState(boolean state){
+	this.state = state;
+    }
 
     public String toString() {
         return this.title;
