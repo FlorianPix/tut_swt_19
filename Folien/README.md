@@ -3,7 +3,7 @@
 | 1             | Einführung               | nein              |
 | 2             | Vererbung und UML        | ja                |
 | 3             | Testen mit JUnit         | ja                |
-| 4             | Generics und Collections | nein              |
+| 4             | Generics und Collections | ja                |
 | 5             | Fortsetzung Collections  | nein              |
 | 6             | Entwurfsmuster I         | nein              |
 | 7             | Entwurfsmuster II        | nein              |
