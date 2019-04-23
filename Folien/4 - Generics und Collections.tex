@@ -1,0 +1,177 @@
+\documentclass[10pt]{beamer}
+
+%theme
+\usetheme{metropolis}
+% packages
+\usepackage{color}
+\usepackage{tabularx}
+\usepackage{listings}
+\usepackage[main=ngerman, USenglish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{csquotes}
+\usepackage{hyperref}
+
+% color definitions
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\definecolor{paleorange}{HTML}{CC7832}
+
+\lstset{
+    backgroundcolor=\color{white},
+    % choose the background color;
+    % you must add \usepackage{color} or \usepackage{xcolor}
+    basicstyle=\footnotesize\ttfamily,
+    % the size of the fonts that are used for the code
+    breakatwhitespace=false,
+    % sets if automatic breaks should only happen at whitespace
+    breaklines=true,                 % sets automatic line breaking
+    captionpos=b,                    % sets the caption-position to bottom
+    commentstyle=\color{mygreen},    % comment style
+    % deletekeywords={...},
+    % if you want to delete keywords from the given language
+    extendedchars=true,
+    % lets you use non-ASCII characters;
+    % for 8-bits encodings only, does not work with UTF-8
+    frame=single,                    % adds a frame around the code
+    keepspaces=true,
+    % keeps spaces in text,
+    % useful for keeping indentation of code
+    % (possibly needs columns=flexible)
+    keywordstyle=\color{blue},       % keyword style
+    % morekeywords={*,...},
+    % if you want to add more keywords to the set
+    numbers=left,
+    % where to put the line-numbers; possible values are (none, left, right)
+    numbersep=5pt,
+    % how far the line-numbers are from the code
+    numberstyle=\tiny\color{mygray},
+    % the style that is used for the line-numbers
+    rulecolor=\color{black},
+    % if not set, the frame-color may be changed on line-breaks
+    % within not-black text (e.g. comments (green here))
+    stepnumber=1,
+    % the step between two line-numbers.
+    % If it's 1, each line will be numbered
+    stringstyle=\color{mymauve},     % string literal style
+    tabsize=4,                       % sets default tabsize to 4 spaces
+    % show the filename of files included with \lstinputlisting;
+    % also try caption instead of title
+    language = Java,
+	showspaces = false,
+	showtabs = false,
+	showstringspaces = false,
+	escapechar = ,
+        morecomment=[s][\textcolor{paleorange}]{@}{\ },
+}
+
+\def\ContinueLineNumber{\lstset{firstnumber=last}}
+\def\StartLineAt#1{\lstset{firstnumber=#1}}
+\let\numberLineAt\StartLineAt
+
+\newcommand{\codeline}[1]{
+        \alert{\texttt{#1}}
+}
+
+% Authors of the slides
+\author{Florian Pix}
+
+% Name of the Course
+\institute{SWT Übung SoSe19}
+
+% Presentation title
+\title{Generics und Collections}
+\date{25.04.2019}
+
+% Fancy Logo
+\titlegraphic{\hfill\includegraphics[height=3cm]{dreamfog}}
+
+\begin{document}
+
+\begin{frame}{Generics und Collections}
+    \titlepage
+\end{frame}
+
+\begin{frame}{Gliederung}
+    \setbeamertemplate{section in toc}[sections numbered]
+    \tableofcontents
+\end{frame}
+
+\begin{frame}[fragile]{Generics}
+    \section{Generics}
+\end{frame}
+
+\begin{frame}[fragile]{ohne Generics}
+\begin{lstlisting}[basicstyle=\ttfamily\scriptsize,gobble=8]
+		public class Box {
+				private String contentS;
+				private Integer contentI;
+				private Cat contentC;
+
+				public Box(String content){
+						this.contentS = content;
+				}
+
+				public Box(Integer content){
+						this.contentI = content;
+				}
+
+				public Box(Cat content){
+						this.contentC = content;
+				}
+		}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{mit Generics}
+Parametrisierte Klasse:
+
+\begin{lstlisting}[basicstyle=\ttfamily\scriptsize,gobble=8]
+		public class Box<T> {
+				private T content;
+
+				public Box(T content){
+						this.content = content;
+				}
+		}
+\end{lstlisting}
+
+Das T steht hier für einen beliebigen Typen.
+\end{frame}
+
+\begin{frame}[fragile]{Interfaces}
+    \section{Interfaces}
+\end{frame}
+
+\begin{frame}[fragile]{Interfaces}
+Ein  \textcolor{mygreen}{\textbf{Interface}} ist eine Schnittstelle, über die\\ 
+einer Klasse bestimmte Funktionen \\
+zur Verfügung gestellt werden.
+
+Um diese Funktionen nutzen zu können, \\
+ \textcolor{mymauve}{\textbf{müssen}} sie aber erst von der Klasse  \textcolor{mymauve}{\textbf{implementiert werden}}. \\
+\end{frame}
+
+\begin{frame}[fragile]{Interfaces}
+Das  \textcolor{mygreen}{\textbf{Interface}} gibt nur den Rahmen bzw. \\
+die \textcolor{mygray}{\textbf{Methodendeklarationen}} vor. \\
+Es ist also nur eine \textcolor{mygreen}{\textbf{Blaupause}}, \\
+und enthält deshalb ausschließlich \textcolor{mymauve}{\textbf{Konstanten}} und \\ 
+\textcolor{mymauve}{\textbf{abstrakte Methoden}}. \\
+\end{frame}
+
+\begin{frame}[fragile]{Collections}
+    \section{Collections}
+\end{frame}
+
+\begin{frame}[fragile]{Collections}
+Java Collections sind Interfaces für Datenstrukturen.\\
+Es gibt Listen, Sets, Maps und Queues.\\
+Alle haben Vor- und Nachteile.\\
+\textcolor{mymauve}{\textbf{\href{https://github.com/RatedARRR/TUT-JAVA-2018/blob/master/Slides/Javakurs 6-13.pdf}{Siehe alter Kurs}}}\\
+Zu jedem sind zudem verschieden Implementierungen vorhanden.\\
+\textcolor{mymauve}{\textbf{\href{https://docs.oracle.com/javase/8/docs/api/java/util/package-summary.html}{Siehe java.util}}}
+\end{frame}
+
+\end{document}
