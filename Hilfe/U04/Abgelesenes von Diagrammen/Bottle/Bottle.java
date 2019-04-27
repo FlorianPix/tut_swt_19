@@ -1,6 +1,6 @@
 package Bottle;
 
-public class Bottle<Drink> {
+public class Bottle<T extends Drink> {
 	private Drink content;
 	
 	public Bottle(Drink content) {
