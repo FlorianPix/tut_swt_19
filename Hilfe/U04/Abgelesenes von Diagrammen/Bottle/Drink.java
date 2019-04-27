@@ -1,5 +1,3 @@
-package Bottle;
-
-public class Drink {
+public abstract class Drink {
 
 }
