@@ -1,5 +1,3 @@
-package Box;
-
 public class Box1 {
 	private String contentS;
 	private Integer contentI;
