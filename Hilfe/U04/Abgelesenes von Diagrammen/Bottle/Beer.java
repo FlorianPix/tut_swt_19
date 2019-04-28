@@ -1,5 +1,3 @@
-package Bottle;
-
 public class Beer extends Drink{
 	private String brewery;
 	

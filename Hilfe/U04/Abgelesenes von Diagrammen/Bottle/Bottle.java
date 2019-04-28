@@ -1,5 +1,3 @@
-package Bottle;
-
 public class Bottle<T extends Drink> {
 	private T content;
 	
