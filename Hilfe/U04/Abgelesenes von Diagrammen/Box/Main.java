@@ -1,5 +1,3 @@
-package Box;
-
 public class Main {
 	public static void main(String[] args) {
 		Box2<String> string_box = new Box2<String>("hallo");
