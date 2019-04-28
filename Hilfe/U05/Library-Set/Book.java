@@ -1,6 +1,4 @@
-package Library;
-
-public class Book {
+public class Book implements Comparable<Book>{
 	private String isbn, author = "", title = "";
 	
 	public Book(String isbn, String author, String title) {
@@ -26,12 +24,20 @@ public class Book {
 	}
 	
 	public String toString() {
-		//TODO
-		return null;
+		return "ISBN: " + this.isbn 
+				+ ", Autor: " + this.author 
+				+ ", Titel: " + this.title;
 	}
 	
 	public int compareTo(Book b) {
-		//TODO
-		return 0;
+		//use compareTo of Strings to compare isbn
 	}
+	
+	public boolean equals(Book b){
+    	//use equals of String to compare isbn
+    }
+    
+    public int hashCode() {
+    	//use hashCode of Strings on isbn
+    }
 }
