@@ -34,10 +34,10 @@ public class Book implements Comparable<Book>{
 	}
 	
 	public boolean equals(Book b){
-    	//use equals of String to compare isbn
-    }
+    		//use equals of String to compare isbn
+    	}
     
-    public int hashCode() {
-    	//use hashCode of Strings on isbn
-    }
+    	public int hashCode() {
+    		//use hashCode of Strings on isbn
+    	}
 }
