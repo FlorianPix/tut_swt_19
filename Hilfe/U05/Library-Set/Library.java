@@ -1,10 +1,10 @@
 //import HashSet or TreeSet
 import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.Set;
+import java.util.Map;
 
 public class Library {
-	private List<Book> stock;
+	private Set<Book> stock;
 	
 	public Library() {
 		//instantiate stock as new HashSet or TreeSet
@@ -16,10 +16,8 @@ public class Library {
 	
 	public Map<String, Set<Book>> listStockByAuthor(){
 		//create new Map with the author names as keys and a set of books as the values
-		//create new Set for search results (books of an author)
+		//define new Set for search results (books of an author)
 		//use an iterator to traverse the stock
-		//Clue: there is a function in the java api 
-		//		to get all keys of a map as a set
 		//add author:books pairs to the map 
 		//if there are more than one book of an author add them to that set of books in the map
 		//return the map
