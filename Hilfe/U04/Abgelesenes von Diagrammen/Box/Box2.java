@@ -1,5 +1,3 @@
-package Box;
-
 public class Box2<T> {
 	private T content;
 
