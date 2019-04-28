@@ -12,7 +12,7 @@ public class Library {
 	
 	public void sortedInsertion(Book newBook) {
 		//add newBook to stock
-        //use sort method of Collections because else binarySearch wont work
+        	//use sort method of Collections because else binarySearch wont work
 	}
 	
 	public Book searchForIsbn(String isbn) {
