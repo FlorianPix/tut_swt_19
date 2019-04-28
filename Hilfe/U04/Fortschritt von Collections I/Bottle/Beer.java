@@ -10,6 +10,6 @@ public class Beer extends Drink{
 	}
 	
 	public String toString() {
-		return null;
+		return this.brewery;
 	}
 }
