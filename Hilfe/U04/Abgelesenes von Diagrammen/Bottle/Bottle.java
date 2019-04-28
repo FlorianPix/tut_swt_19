@@ -1,9 +1,9 @@
 package Bottle;
 
-public class Bottle<Drink> {
-	private Drink content;
+public class Bottle<T extends Drink> {
+	private T content;
 	
-	public Bottle(Drink content) {
+	public Bottle(T content) {
 		this.content = content;
 	}
 	
@@ -12,11 +12,11 @@ public class Bottle<Drink> {
 		return false;
 	}
 	
-	public void fill(Drink content) {
+	public void fill(T content) {
 		//TODO
 	}
 	
-	public Drink empty() {
+	public T empty() {
 		//TODO
 		return null;
 	}
