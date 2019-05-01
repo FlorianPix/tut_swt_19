@@ -1,0 +1,235 @@
+\documentclass[10pt]{beamer}
+
+%theme
+\usetheme{metropolis}
+% packages
+\usepackage{color}
+\usepackage{tabularx}
+\usepackage{listings}
+\usepackage[main=ngerman, USenglish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{csquotes}
+\usepackage{hyperref}
+\usepackage{transparent}
+
+% color definitions
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\definecolor{paleorange}{HTML}{CC7832}
+
+\lstset{
+    backgroundcolor=\color{white},
+    % choose the background color;
+    % you must add \usepackage{color} or \usepackage{xcolor}
+    basicstyle=\footnotesize\ttfamily,
+    % the size of the fonts that are used for the code
+    breakatwhitespace=false,
+    % sets if automatic breaks should only happen at whitespace
+    breaklines=true,                 % sets automatic line breaking
+    captionpos=b,                    % sets the caption-position to bottom
+    commentstyle=\color{mygreen},    % comment style
+    % deletekeywords={...},
+    % if you want to delete keywords from the given language
+    extendedchars=true,
+    % lets you use non-ASCII characters;
+    % for 8-bits encodings only, does not work with UTF-8
+    frame=single,                    % adds a frame around the code
+    keepspaces=true,
+    % keeps spaces in text,
+    % useful for keeping indentation of code
+    % (possibly needs columns=flexible)
+    keywordstyle=\color{blue},       % keyword style
+    % morekeywords={*,...},
+    % if you want to add more keywords to the set
+    numbers=left,
+    % where to put the line-numbers; possible values are (none, left, right)
+    numbersep=5pt,
+    % how far the line-numbers are from the code
+    numberstyle=\tiny\color{mygray},
+    % the style that is used for the line-numbers
+    rulecolor=\color{black},
+    % if not set, the frame-color may be changed on line-breaks
+    % within not-black text (e.g. comments (green here))
+    stepnumber=1,
+    % the step between two line-numbers.
+    % If it's 1, each line will be numbered
+    stringstyle=\color{mymauve},     % string literal style
+    tabsize=4,                       % sets default tabsize to 4 spaces
+    % show the filename of files included with \lstinputlisting;
+    % also try caption instead of title
+    language = Java,
+	showspaces = false,
+	showtabs = false,
+	showstringspaces = false,
+	escapechar = ,
+        morecomment=[s][\textcolor{paleorange}]{@}{\ },
+}
+
+\def\ContinueLineNumber{\lstset{firstnumber=last}}
+\def\StartLineAt#1{\lstset{firstnumber=#1}}
+\let\numberLineAt\StartLineAt
+
+\newcommand{\codeline}[1]{
+        \alert{\texttt{#1}}
+}
+
+% Authors of the slides
+\author{Florian Pix}
+
+% Name of the Course
+\institute{SWT Übung SoSe19}
+
+% Presentation title
+\title{Generics und Collections}
+\date{02.05.2019}
+
+% Fancy Logo
+\titlegraphic{\hfill\includegraphics[height=3cm]{greek}}
+
+\begin{document}
+
+\begin{frame}{Generics und Collections}
+    \titlepage
+\end{frame}
+
+\begin{frame}{Gliederung}
+    \setbeamertemplate{section in toc}[sections numbered]
+    \tableofcontents
+\end{frame}
+
+\begin{frame}[fragile]{Übersicht}
+    \section{Übersicht}
+\end{frame}
+
+\begin{frame}[fragile]{Übersicht}
+\includegraphics[height=5.25cm]{Model}
+\end{frame}
+
+\begin{frame}[fragile]{List}
+    \section{List}
+ArrayList
+
+LinkedList
+\end{frame}
+
+\begin{frame}[fragile]{ArrayList}
+Im Prinzip ein Array mit ein paar Methoden.
+
+\begin{itemize}
+\item Zugriff auf Elemente per Index \includegraphics[height=0.25cm]{uparrow}
+\item Iterierbar \includegraphics[height=0.25cm]{uparrow}
+\item Hinzufügen und Entfernen von Elementen langsam \includegraphics[height=0.25cm]{downarrow}
+\end{itemize}
+
+\textcolor{mymauve}{\textbf{\href{https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html}{javadoc}}}
+\end{frame}
+
+\begin{frame}[fragile]{LinkedList}
+Intern kein Array sondern eine doppelt verkettete Liste.\\
+(Jedes Element hat einen Zeiger auf seinen Vorgänger und Nachfolger.)
+
+\begin{itemize}
+\item Einfügen und Entfernen von Elementen schnell \includegraphics[height=0.25cm]{uparrow}
+\item Zugriff auf einzelnes Element langsam \includegraphics[height=0.25cm]{downarrow}
+\item mehr Speicherbedarf \includegraphics[height=0.25cm]{downarrow}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Set}
+    \section{Set}
+HashSet
+
+SortedSet
+\end{frame}
+
+\begin{frame}[fragile]{Set}
+Realisierung der mathematischen Menge.\\
+D.h. es gibt in einem Set keine Dublikate\\
+aber auch keinen Index.
+\end{frame}
+
+\begin{frame}[fragile]{HashSet}
+Einfügen und Suchen erfolgt mit Hashs.\\
+Das sind int IDs, die aus den Daten\\
+eines Objekts gebildet werden können.
+
+\textcolor{mymauve}{\textbf{\href{http://www.straub.as/java/basic/hashset.html}{Hilfe}}}
+
+\textcolor{mymauve}{\textbf{\href{https://www.baeldung.com/java-hashcode}{siehe hashCode()}}}
+\end{frame}
+
+\begin{frame}[fragile]{Einfügen in HashSets}
+Mit dem \textcolor{mygreen}{HashCode} des einzufügenden Elementes sucht HashSet zuerst die Schublade mit dieser Nummer.
+\end{frame}
+
+\begin{frame}[fragile]{Einfügen in HashSets}
+\texttransparent{0.4}{Mit dem \textcolor{mygreen}{HashCode} des einzufügenden Elementes sucht HashSet zuerst die Schublade mit dieser Nummer.}
+
+Wird Sie nicht gefunden, wird das Element als neu eingestuft\\ 
+und in einer neuen Schublade mit dieser Nummer abgelegt. 
+
+Falls doch werden alle Objekte in dieser Schublade mit dem neuen Element verglichen.
+ 
+Dazu verwendet \textcolor{mygreen}{HashSet} die Methode \textcolor{mygreen}{equals()}. 
+\end{frame}
+
+\begin{frame}[fragile]{Einfügen in HashSets}
+\texttransparent{0.4}{Mit dem \textcolor{mygreen}{HashCode} des einzufügenden Elementes sucht HashSet zuerst die Schublade mit dieser Nummer.}
+
+\texttransparent{0.4}{Wird Sie nicht gefunden, wird das Element als neu eingestuft\\ 
+und in einer neuen Schublade mit dieser Nummer abgelegt.}
+
+\texttransparent{0.4}{Falls doch werden alle Objekte in dieser Schublade mit dem neuen Element verglichen.}
+ 
+\texttransparent{0.4}{Dazu verwendet \textcolor{mygreen}{HashSet} die Methode \textcolor{mygreen}{equals()}.}
+
+Wird mit dieser Methode kein Objekt gefunden,\\ 
+wird das Objekt in dieser Schublade gespeichert,\\ 
+andernfalls wird es nicht aufgenommen. 
+\end{frame}
+
+\begin{frame}[fragile]{HashSet}
+Daraus folgt dass wenn wir \textcolor{mygreen}{equals()} selbst implementieren, man auch die \textcolor{mygreen}{hashCode()} neu schreiben sollte.\\ 
+Damit \textcolor{mygreen}{HashSets} effizient funktionieren.
+\end{frame}
+
+\begin{frame}[fragile]{HashSet}
+\texttransparent{0.4}{Daraus folgt dass wenn wir \textcolor{mygreen}{equals()} selbst implementieren, man auch die \textcolor{mygreen}{hashCode()} neu schreiben sollte.\\ 
+Damit \textcolor{mygreen}{HashSets} effizient funktionieren.}
+
+Elemente, die mit \textcolor{mygreen}{equals} gleich sind, \\ 
+müssen den gleichen \textcolor{mygreen}{HashCode} erzeugen. \\
+Ansonsten würden sie in verschiedenen Schubladen gesteckt werden.
+\end{frame}
+
+\begin{frame}[fragile]{Sorted Set}
+Elemente werden sortiert eingefügt nach ihrer Ordnung.\\
+D.h. sie müssen Comparable implementieren.
+\end{frame}
+
+\begin{frame}[fragile]{Map}
+    \section{Map}
+\end{frame}
+
+\begin{frame}[fragile]{Map}
+Besteht aus Schlüssel-Wert-Paaren.\\
+Werte können doppelt auftauchen,\\
+aber Schlüssel müssen einzigartig sein.
+
+\begin{itemize}
+\item Werte könenn mit ihrem Schlüssel schnell gefunden werden.\includegraphics[height=0.25cm]{uparrow}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Vergleich}
+\section{Vergleich}
+\end{frame}
+
+\begin{frame}[fragile]{Vergleich}
+\includegraphics[height=5cm]{comp}
+\textcolor{mymauve}{\textbf{\href{https://i0.wp.com/www.lavivienpost.com/wp-content/uploads/2018/04/Java-collections-cheat-sheet2.jpg?resize=768 2C500&ssl=1}{Source}}}
+\end{frame}
+
+\end{document}
