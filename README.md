@@ -2,9 +2,8 @@
 Zusatzinformationen und -folien zu den Übungen SoSe19 Softwaretechnologie
 
 Aktuelles:
-Zur U04 habe ich eine Beispiel main hochgeladen, 
-mit Kommentaren die verdeutlicht wie man letztendlich 
-mit Generics und abstrakten Klassen arbeitet und wie nicht.  
+CRC Tool
+https://st-lab-ci.inf.tu-dresden.de/RoMoVis
 
 Donnerstag 2.DS APB/E006
 
